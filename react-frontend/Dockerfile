@@ -1,15 +1,18 @@
+# silence the platform warning
+ARG TARGETPLATFORM=linux/amd64
+
 # Stage 1: Build React App with Vite
-FROM --platform=linux/amd64 node:18-alpine AS build
+# Bumped to node:20 to support Vite 6+
+FROM --platform=${TARGETPLATFORM} node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-# Vite build outputs to the 'dist' folder
 RUN npm run build
 
 # Stage 2: Serve with NGINX
-FROM --platform=linux/amd64 nginx:alpine
-# Note the change from /app/build to /app/dist
+FROM --platform=${TARGETPLATFORM} nginx:alpine
+# Vite build outputs to the 'dist' folder
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
