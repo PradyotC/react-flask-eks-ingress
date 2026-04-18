@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flask
-          image: YOUR_DOCKERHUB_USERNAME/flask-backend:latest
+          image: pradyotc/flask-backend:latest
           ports:
             - containerPort: 5000
           env:
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
         - name: react-nginx
-          image: YOUR_DOCKERHUB_USERNAME/react-frontend:latest
+          image: pradyotc/react-frontend:latest
           ports:
             - containerPort: 80
 ---
