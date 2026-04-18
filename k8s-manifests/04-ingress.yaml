@@ -35,4 +35,4 @@ spec:
               service:
                 name: react-frontend-svc
                 port:
-                  number: 80s
+                  number: 80
