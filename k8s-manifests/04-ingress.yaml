@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   name: capstone-ingress
   annotations:
-    kubernetes.io/ingress.class: alb
+    # Notice we removed the kubernetes.io/ingress.class annotation
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
 spec:
+  ingressClassName: alb # <--- Added this natively to the spec
   rules:
     - http:
         paths:
-          # 1. Route /api traffic to the Flask backend
           - path: /api
             pathType: Prefix
             backend:
@@ -18,8 +18,6 @@ spec:
                 name: flask-backend-svc
                 port:
                   number: 5000
-
-          # 2. Route all other traffic (/) to the React frontend
           - path: /
             pathType: Prefix
             backend:
