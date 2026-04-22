@@ -14,7 +14,6 @@ This project demonstrates a minimal yet real-world microservices architecture:
 
 - Docker installed locally
 - AWS credentials (`.aws/`) configured with sufficient permissions for EKS/ECR
-- [kubectl](https://kubernetes.io/docs/tasks/tools/) (if running outside container)
 - Create your `.env` file in the project root by copying `.env.format` and filling in necessary values:
     ```bash
     cp .env.format .env
