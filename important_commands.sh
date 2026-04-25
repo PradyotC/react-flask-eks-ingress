@@ -7,8 +7,8 @@ docker run --rm -it \
 kubectl get ingress capstone-ingress
 
 #test the links
-curl -v http://k8s-default-capstone-81f42579c4-1854062926.us-east-1.elb.amazonaws.com/
-curl -v http://k8s-default-capstone-81f42579c4-1854062926.us-east-1.elb.amazonaws.com/dashboard
+curl -v http://k8s-default-capstone-81f42579c4-21929436.us-east-1.elb.amazonaws.com/
+curl -v http://k8s-default-capstone-81f42579c4-21929436.us-east-1.elb.amazonaws.com/dashboard
 curl -v http://k8s-default-capstone-81f42579c4-1854062926.us-east-1.elb.amazonaws.com/api/v1/health
 
 bash /usr/local/bin/destroy.sh

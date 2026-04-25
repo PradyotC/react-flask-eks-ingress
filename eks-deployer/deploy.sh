@@ -52,6 +52,13 @@ helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-contro
   --set region=$REGION \
   --set vpcId=$VPC_ID
 
+echo "⏳ Waiting for AWS Load Balancer Controller to be ready (Fargate takes 1-3 mins)..."
+kubectl rollout status deployment aws-load-balancer-controller -n kube-system --timeout=5m
+
+echo "☸️ Applying Kubernetes manifests..."
+if [ -d "/workspace/k8s-manifests" ]; then
+    kubectl apply -f /workspace/k8s-manifests/
+
 echo "☸️ Applying Kubernetes manifests..."
 if [ -d "/workspace/k8s-manifests" ]; then
     kubectl apply -f /workspace/k8s-manifests/
